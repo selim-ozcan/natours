@@ -1,0 +1,94 @@
+.btn {
+
+    &:link,
+    &:visited {
+        display: inline-block;
+        position: relative;
+        text-transform: uppercase;
+        text-decoration: none;
+        /* button ve anchor'larda dekorasyonu resetlemek için kullanışlı.*/
+        padding: 1.5rem 4rem;
+        border-radius: 5rem;
+        font-size: $default-font-size;
+        transition: all 0.2s;
+    }
+
+    &:hover {
+        transform: translateY(-.3rem);
+        box-shadow: 0 10px 20px rgba($color-black, 0.2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+            /* transition propertysini .btn::after'a değil de buraya koyunca
+            unhover durumunda animasyon geri dönüşü olmuyor daha güzel gözüküyor. Ancak böyle çalışmasının sebebini bulamadım.*/
+            transition: all 0.4s;
+        }
+    }
+
+    &:active {
+        transform: translateY(-.1rem);
+        /* link state'ine oranla hesaplanır. hover state'ine göre değil.*/
+        box-shadow: 0 10px 10px rgba($color-black, 0.2);
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+
+    }
+
+    &::after {
+        /*pseoudo elementin display edilmesini istiyorsak boş da olsa
+        content propertysini set etmeliyiz.*/
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 5rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        /*burada z-index kullanmaktansa ::after yerine :: before pseudoclass kullanarak da çözebilirdik. */
+    }
+
+
+
+    &--animated {
+        animation: moveInBottom 0.5s ease-out 0.75s;
+        /* 0.75s animation delay*/
+        animation-fill-mode: backwards;
+    }
+
+}
+
+.btn-text {
+
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: .15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color: $color-black, $alpha: .15);
+        transform: translateY(0px);
+    }
+}

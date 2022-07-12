@@ -1,0 +1,41 @@
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/base";
+@import "base/animations";
+@import "base/typography";
+@import "base/utilities";
+
+@import "components/button";
+@import "components/composition";
+@import "components/feature-box";
+
+@import "layout/header";
+@import "layout/grid";
+
+@import "pages/home";
+
+
+/* box-sizing: content-box | border-box 
+   display: block | inline | inline-block | none 
+   position: relative | absolute 
+   transform: translate() translateX() translateY() 
+   skew scale rotate ...
+   float: right | left
+
+   floatlarda text ve inline elementler float elementlerin etrafına sarılır.
+   Ancak absolute positioning'de çevredeki elemanların bir etkisi olmaz, overlapping durumu dahi olabilir.
+   
+*/
+
+// global package'lar direkt olarak command line'dan çağrılabilir. ama diğerleri çağrılamaz.
+// bunun için genellikle npm script'leri kullanırız.
+
+// mac terminalde, touch dosya oluşturma, mkdir directory oluşturma, open dosyayı açma
+
+/* keyframes ile sadece opacity ve transform'un animate edilmesi browser performansı için en iyisi.*/
+
+// calc() fonksiyonu ile birimleri karışık kullanarak hesaplama yapabiliriz.
+
+// when an element is floated, it is taken out of the normal flow of the document (though still remaining part of it). It is shifted to the left, or right, until it touches the edge of its containing box, or another floated element.

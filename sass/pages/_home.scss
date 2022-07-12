@@ -1,0 +1,25 @@
+.section-about {
+    background-color: $color-grey-light-1;
+    padding: 25rem 0;
+    margin-top: -20vh;
+}
+
+.section-features {
+    /* gradyanları her zaman background image propertysinde set ederiz.*/
+    background-image: linear-gradient(to right bottom,
+            rgba($color-primary-light, 0.4),
+            rgba($color-primary-dark, 0.4)),
+        url(../img/nat-4.jpg);
+    /* birden fazla background image olabilir. ilk yazılan kullanıcıya daha yakın olacak şekilde stacklenecektir.*/
+    background-size: cover;
+    background-position: top;
+
+    padding: 20rem 0;
+
+    transform: skewY(-7deg);
+    margin-top: -10rem;
+
+    &>* {
+        transform: skewY(+7deg);
+    }
+}

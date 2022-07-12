@@ -1,0 +1,404 @@
+@charset "UTF-8";
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+@-webkit-keyframes moveInLeft {
+  0% {
+    transform: translateX(-10rem);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes moveInLeft {
+  0% {
+    transform: translateX(-10rem);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes moveInRight {
+  0% {
+    transform: translateX(10rem);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes moveInRight {
+  0% {
+    transform: translateX(10rem);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+body {
+  font-family: "Lato", sans-serif;
+  /* font ile ilgili attributeleri body altında belirlemek universal selector ile belirlemekten daha iyi practice. Inheritance kullanılmış olur.*/
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+}
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  padding-left: 3.5rem;
+  /* animation prop. ile keyframe animasyonlarını belirleyebiliriz.*/
+  -webkit-animation: moveInRight 1s ease-out;
+          animation: moveInRight 1s ease-out;
+}
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 1.75rem;
+  padding-left: 1.75rem;
+  -webkit-animation: moveInLeft 1s ease-out;
+          animation: moveInLeft 1s ease-out;
+}
+
+.heading-secondary {
+  display: inline-block;
+  font-size: 3.5rem;
+  color: transparent;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  letter-spacing: 0.2rem;
+  -webkit-background-clip: text;
+          background-clip: text;
+  transition: all 0.2s;
+}
+.heading-secondary:hover {
+  transform: skewX(15deg) skewY(2deg) scale(1.1);
+  text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: 1.6rem;
+}
+.paragraph:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+.u-center-text {
+  text-align: center;
+}
+
+.u-margin-bottom-large {
+  margin-bottom: 8rem;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem;
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem;
+}
+
+.btn:link, .btn:visited {
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  /* button ve anchor'larda dekorasyonu resetlemek için kullanışlı.*/
+  padding: 1.5rem 4rem;
+  border-radius: 5rem;
+  font-size: 1.6rem;
+  transition: all 0.2s;
+}
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+  /* transition propertysini .btn::after'a değil de buraya koyunca
+  unhover durumunda animasyon geri dönüşü olmuyor daha güzel gözüküyor. Ancak böyle çalışmasının sebebini bulamadım.*/
+  transition: all 0.4s;
+}
+.btn:active {
+  transform: translateY(-0.1rem);
+  /* link state'ine oranla hesaplanır. hover state'ine göre değil.*/
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+.btn--white {
+  background-color: #fff;
+  color: #777;
+}
+.btn--white::after {
+  background-color: #fff;
+}
+.btn::after {
+  /*pseoudo elementin display edilmesini istiyorsak boş da olsa
+  content propertysini set etmeliyiz.*/
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  /*burada z-index kullanmaktansa ::after yerine :: before pseudoclass kullanarak da çözebilirdik. */
+}
+.btn--animated {
+  -webkit-animation: moveInBottom 0.5s ease-out 0.75s;
+          animation: moveInBottom 0.5s ease-out 0.75s;
+  /* 0.75s animation delay*/
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+}
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  transition: all 0.2s;
+}
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0px);
+}
+
+.composition {
+  position: relative;
+}
+.composition__photo {
+  max-width: 55%;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  position: absolute;
+  outline-offset: 2rem;
+  transition: all 0.2s;
+}
+.composition__photo--p1 {
+  left: 0;
+  top: -2rem;
+}
+.composition__photo--p2 {
+  top: 2rem;
+  right: 0;
+}
+.composition__photo--p3 {
+  top: 10rem;
+  left: 20%;
+}
+.composition__photo:hover {
+  outline: 1.5rem solid #55c57a;
+  transform: scale(1.05) translateY(-0.5rem);
+  box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+.composition:hover .composition__photo:not(:hover) {
+  transform: scale(0.9);
+}
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: all 0.2s;
+}
+.feature-box__icon {
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+          background-clip: text;
+  font-size: 6rem;
+  color: transparent;
+}
+.feature-box:hover {
+  transform: scale(1.05) translateY(-1.5rem);
+}
+
+.header {
+  height: 95vh;
+  /* gradyanları her zaman background image propertysinde set ederiz.*/
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.4), rgba(40, 180, 133, 0.4)), url(../img/hero.jpg);
+  /* birden fazla background image olabilir. ilk yazılan kullanıcıya daha yakın olacak şekilde stacklenecektir.*/
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  /*modern css property clip path. */
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+.header__logo-box {
+  /* absolutely positioned bir elementin pozisyonu, en yakın relatively positioned elementin konumuna göre belirlenir. bundan dolayı header'ın positionını relative yaptık.*/
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+.header__logo {
+  height: 3.5rem;
+}
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  /* yüzdelikler elementin parentinin boyutuna oranlı*/
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* yüzdelikler elementin kendi boyutuna oranlı*/
+  /* text-align prop. box'un içindeki ***'inline'**** content'in
+  nasıl align edileceğini söyler yani. text-box'ın içindeki buton'u align etmek için kullanabiliriz. (inline-block olarak değiştirmiş olsak da inline karakterinin bir kısmını korur)*/
+  /* aynı zamanda text-align'ı heading primary ve sub için de kullanabilirdik. ancak onların display'ini block olarak değiştirdiğimiz için artık text-align propertysi etki etmeyecektir.*/
+  text-align: center;
+}
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto;
+}
+.row:not(:last-child) {
+  margin-bottom: 8rem;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.row [class^=col-] {
+  float: left;
+}
+.row [class^=col-]:not(:last-child) {
+  margin-right: 6rem;
+}
+.row .col-1-of-2 {
+  width: calc((100% - 6rem) / 2);
+}
+.row .col-1-of-3 {
+  width: calc((100% - 2 * 6rem) / 3);
+}
+.row .col-2-of-3 {
+  width: calc((100% - 2 * 6rem) / 3 * 2 + 6rem);
+}
+.row .col-1-of-4 {
+  width: calc((100% - 3 * 6rem) / 4 * 1);
+}
+.row .col-2-of-4 {
+  width: calc((100% - 3 * 6rem) / 4 * 2 + 6rem);
+}
+.row .col-3-of-4 {
+  width: calc((100% - 3 * 6rem) / 4 * 3 + 12rem);
+}
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh;
+}
+
+.section-features {
+  /* gradyanları her zaman background image propertysinde set ederiz.*/
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.4), rgba(40, 180, 133, 0.4)), url(../img/nat-4.jpg);
+  /* birden fazla background image olabilir. ilk yazılan kullanıcıya daha yakın olacak şekilde stacklenecektir.*/
+  background-size: cover;
+  background-position: top;
+  padding: 20rem 0;
+  transform: skewY(-7deg);
+  margin-top: -10rem;
+}
+.section-features > * {
+  transform: skewY(7deg);
+}
+
+/* box-sizing: content-box | border-box 
+   display: block | inline | inline-block | none 
+   position: relative | absolute 
+   transform: translate() translateX() translateY() 
+   skew scale rotate ...
+   float: right | left
+
+   floatlarda text ve inline elementler float elementlerin etrafına sarılır.
+   Ancak absolute positioning'de çevredeki elemanların bir etkisi olmaz, overlapping durumu dahi olabilir.
+
+*/
+/* keyframes ile sadece opacity ve transform'un animate edilmesi browser performansı için en iyisi.*//*# sourceMappingURL=main.css.map */

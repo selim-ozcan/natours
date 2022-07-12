@@ -1,0 +1,42 @@
+.header {
+    height: 95vh;
+    /* gradyanları her zaman background image propertysinde set ederiz.*/
+    background-image: linear-gradient(to right bottom,
+            rgba($color-primary-light, 0.4),
+            rgba($color-primary-dark, 0.4)),
+        url(../img/hero.jpg);
+    /* birden fazla background image olabilir. ilk yazılan kullanıcıya daha yakın olacak şekilde stacklenecektir.*/
+    background-size: cover;
+    background-position: top;
+    position: relative;
+
+    /*modern css property clip path. */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    &__logo-box {
+        /* absolutely positioned bir elementin pozisyonu, en yakın relatively positioned elementin konumuna göre belirlenir. bundan dolayı header'ın positionını relative yaptık.*/
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem;
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        /* yüzdelikler elementin parentinin boyutuna oranlı*/
+        left: 50%;
+        transform: translate(-50%,
+                -50%);
+        /* yüzdelikler elementin kendi boyutuna oranlı*/
+
+        /* text-align prop. box'un içindeki ***'inline'**** content'in
+        nasıl align edileceğini söyler yani. text-box'ın içindeki buton'u align etmek için kullanabiliriz. (inline-block olarak değiştirmiş olsak da inline karakterinin bir kısmını korur)*/
+
+        /* aynı zamanda text-align'ı heading primary ve sub için de kullanabilirdik. ancak onların display'ini block olarak değiştirdiğimiz için artık text-align propertysi etki etmeyecektir.*/
+        text-align: center;
+    }
+}
